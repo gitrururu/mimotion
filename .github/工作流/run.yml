@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: 15 13 * * *
+    cron: 18 13 * * *
   watch:
     types: started
 
@@ -16,12 +16,12 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-      - uses: actions/checkout@v2
-      - name: 初始化Python
+      uses: actions/checkout@v2
+      name: 初始化Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
-      - name: 开始
+      name: 开始
         run: |
           pip install requests
           pmode='${{ secrets.PMODE }}'
